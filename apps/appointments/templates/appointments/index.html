@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Appointments</title>
+  </head>
+  <body>
+    <h2>Schedule an appointment:</h2>
+    {%if messages %}
+    {% for msg in messages %}
+      <p class='red'>{{ msg }}</p>
+    {% endfor %}
+    {% endif %}
+
+    <form action='/add_appointment' method='post'>
+      {%csrf_token%}
+      <label>Name:</label>
+      <input type='text' name='name'>
+      <p></p>
+      <label>Date:</label>
+      <input type='date' name='day'>
+      <p></p>
+      <label>Time:</label>
+      <input type="time" name="time" min="09:00:00" max="18:00:00">
+      <p></p>
+      <input type='submit' value='Register'>
+
+    </form>
+
+  </body>
+</html>
